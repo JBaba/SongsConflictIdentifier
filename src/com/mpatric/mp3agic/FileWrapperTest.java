@@ -44,4 +44,10 @@ public class FileWrapperTest {
     public void shouldFailForNullFilenameFile() throws IOException {
         new FileWrapper((java.io.File) null);
     }
+    
+    @Test
+    public void shouldContentEqualsItself() throws IOException {
+    	FileWrapper fileWrapper = new FileWrapper(VALID_FILENAME);
+    	assertTrue(fileWrapper.contentEquals(fileWrapper));
+    }
 }
