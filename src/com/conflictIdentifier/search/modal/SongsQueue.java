@@ -31,8 +31,12 @@ public class SongsQueue {
 		// find first char 
 		// place in queue [A-Z or 0-9] based on index form mapper object 
 		char firstChar = keyWord.charAt(0);
-		
+		Character firstCharUpperCase = Character.toUpperCase(firstChar);
 		QueueItem firstItem = null;
+		// only consider A-Z or 0-90 if not then return
+		if( !(( firstCharUpperCase > 65 && firstCharUpperCase < 90 )  || ( firstCharUpperCase > 48 && firstCharUpperCase < 57 )) ){
+			return;
+		}
 		// get index
 		int index = MapperSingleton.INSTANCE.getInstace().get(firstChar);
 		
@@ -58,7 +62,7 @@ public class SongsQueue {
 			char c = keyWord.charAt(i);
 			Character upperCase = Character.toUpperCase(c);
 			// only consider A-Z or 0-9
-			if( ( upperCase > 65 && upperCase < 90 )  || ( upperCase > 48 && upperCase < 57 ) ){
+			if( ( upperCase >= 65 && upperCase <= 90 )  || ( upperCase >= 48 && upperCase <= 57 ) ){
 			
 				if(firstItem.getItem(c) != null){
 					newItem = firstItem.getItem(c);			

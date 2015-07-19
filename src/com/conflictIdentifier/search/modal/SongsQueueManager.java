@@ -2,6 +2,8 @@ package com.conflictIdentifier.search.modal;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 
 import com.SongsConflictIdentifier.modal.SongsModal;
 import com.mpatric.mp3agic.InvalidDataException;
@@ -17,10 +19,16 @@ public class SongsQueueManager {
 
 	// queue
 	SongsQueue queue = new SongsQueue();
+	List<String> ignoreList = null;
 	// songs id
 	int songId = 1;
 	
 	public SongsQueueManager() {
+		ignoreList = new LinkedList<String>();
+		ignoreList.add("(Remix)");
+		ignoreList.add("[www.DJMaza.Com]");
+		ignoreList.add("Mp3HunGama.Com");
+		ignoreList.add("@");
 	}
 
 	/**
@@ -29,9 +37,13 @@ public class SongsQueueManager {
 	 * @param modal
 	 */
 	public SongsQueue searchByArtist(SongsModal modal) {
+		System.out.println(modal.getTitle());
 		String[] array = modal.getTitle().split(" ");
 		for (int i = 0; i < array.length; i++) {
-			queue.addKeyWord(array[i], modal);
+			// ignore some keywords and if length is more then 0 then proceed
+			if(!ignoreList.contains(array[i]) && array[i].length() != 0){
+				queue.addKeyWord(array[i], modal);
+			}
 		}
 		return queue;
 	}
@@ -49,7 +61,7 @@ public class SongsQueueManager {
 
 		for (int i = 0; i < listOfFiles.length; i++) {
 			if (listOfFiles[i].isFile()) {
-				System.out.println("File " + listOfFiles[i].getName());
+				//System.out.println("File " + listOfFiles[i].getName());
 				buildSongsModal(listOfFiles[i]);
 			} else if (listOfFiles[i].isDirectory()) {
 				System.out.println("Directory " + listOfFiles[i].getName());
