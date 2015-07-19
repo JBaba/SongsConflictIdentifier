@@ -54,6 +54,14 @@ public class SongsModal implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
 	public String getSongPath() {
 		return songPath;
 	}
