@@ -56,21 +56,26 @@ public class SongsQueue {
 			
 			QueueItem newItem = null;
 			char c = keyWord.charAt(i);
-			if(firstItem.getItem(c) != null){
-				newItem = firstItem.getItem(c);			
-			}else{
-				// create new
-				newItem = new QueueItem();
-				newItem.setFlag(c+"");
-				firstItem.addItem(newItem);
-			}
+			Character upperCase = Character.toUpperCase(c);
+			// only consider A-Z or 0-9
+			if( ( upperCase > 65 && upperCase < 90 )  || ( upperCase > 48 && upperCase < 57 ) ){
 			
-			// add songs in list
-			if(i == keyWord.length()){
-				newItem.addSongModal(modal);
+				if(firstItem.getItem(c) != null){
+					newItem = firstItem.getItem(c);			
+				}else{
+					// create new
+					newItem = new QueueItem();
+					newItem.setFlag(c+"");
+					firstItem.addItem(newItem);
+				}
+				
+				// add songs in list
+				if(i == keyWord.length()){
+					newItem.addSongModal(modal);
+				}
+				// switch place
+				firstItem = newItem;
 			}
-			// switch place
-			firstItem = newItem;
 		}
 	}
 
