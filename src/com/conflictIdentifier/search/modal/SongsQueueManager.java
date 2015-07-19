@@ -3,11 +3,9 @@ package com.conflictIdentifier.search.modal;
 import java.io.IOException;
 
 import com.SongsConflictIdentifier.modal.SongsModal;
-import com.mpatric.mp3agic.ID3v1;
 import com.mpatric.mp3agic.ID3v2;
 import com.mpatric.mp3agic.InvalidDataException;
 import com.mpatric.mp3agic.Mp3File;
-import com.mpatric.mp3agic.UnsupportedTagException;
 
 public class SongsQueueManager {
 

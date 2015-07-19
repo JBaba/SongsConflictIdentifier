@@ -3,8 +3,14 @@ package com.conflictIdentifier.search.util;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * Mapper beetween index and A-Z to 0-9
+ * @author naimish
+ *
+ */
 public class Mapper {
 
+	// storage 
 	Map<Character,Integer> myMapping = null;
 	
 	private Mapper() {
@@ -12,18 +18,27 @@ public class Mapper {
 		init();
 	}
 	
+	// singleton impl using enum
 	public enum MapperSingleton {
 		
 		INSTANCE;
 		
+		// final variable
 		private static final Mapper mapper=new Mapper();
 		
+		/**
+		 * give me instance of mapper
+		 * @return
+		 */
 		public Mapper getInstace(){
 			return mapper;
 		}
 		
 	}
 	
+	/**
+	 * init mapper with values
+	 */
 	private void init(){
 		myMapping.put('A', 0);
 		myMapping.put('B', 1);
