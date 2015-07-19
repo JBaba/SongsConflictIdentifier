@@ -12,6 +12,9 @@ import com.mpatric.mp3agic.UnsupportedTagException;
 
 /**
  * Manages/Builds queues to compare  
+ * 
+ * to-do : create criteria for this keyword filter
+ * and by using that remove code which is used to ignore special character in SongsQueue.java file.
  * @author naimish
  *
  */
