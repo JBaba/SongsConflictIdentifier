@@ -1,14 +1,9 @@
 package com.conflictIdentifier.test;
 
-import java.awt.image.BufferedImage;
-import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-
-import javax.imageio.ImageIO;
 
 import com.mpatric.mp3agic.ID3v1;
 import com.mpatric.mp3agic.ID3v2;
@@ -19,7 +14,7 @@ import com.mpatric.mp3agic.UnsupportedTagException;
 public class MyTest {
 	
 	public static void main(String[] args) throws UnsupportedTagException, InvalidDataException, IOException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, Exception {
-		String songPath = "E:\\My Song\\";
+		String songPath = "F:\\Songs\\";
 		String songName = "Hanuman chalisha.mp3";
 		Mp3File mp3file = new Mp3File(songPath+songName);
 		System.out.println(mp3file.getChannelMode());
@@ -59,7 +54,7 @@ public class MyTest {
 				// get name of name method
 			    System.out.print("\n"+propertyDescriptor.getReadMethod().getName().replace("get", ""));
 			    // get only those method which argument is  0
-			    if(propertyDescriptor.getReadMethod().getParameterCount() == 0 ){
+			    if(propertyDescriptor.getReadMethod().getParameterTypes().length == 0 ){
 			    	Object printO = propertyDescriptor.getReadMethod().invoke(aObject, null);
 			    	printO = (printO != null) ? printO : "";
 			    	System.out.print("  :  "+ printO);
